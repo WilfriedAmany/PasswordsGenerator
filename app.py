@@ -6,11 +6,17 @@ from utils import save_password_to_supabase, ensure_session_exists, get_password
 from supabase_client import supabase_connected
 
 ########################################################
-# Check Supabase connection
+# Supabase connection status — displayed on every render.
+#
+# The application is intentionally designed to work without Supabase:
+# password generation is entirely local and never depends on the database.
+# Supabase is used only for persistence (saving passwords, tracking sessions).
+# If the connection is unavailable (network down, misconfigured .env, etc.),
+# a warning is shown but no functionality is lost — the app degrades gracefully.
 if supabase_connected:
     st.success("Connection to Supabase: success")
 else:
-    st.error("Connection to Supabase: failed")
+    st.warning("⚠️ Connexion à Supabase indisponible. L'application reste utilisable.")
 
 ########################################################
 # Initialize session state
