@@ -45,9 +45,8 @@ with st.sidebar:
     st.info("Use words that are easy for you to remember but hard for others to guess.")
 
     st.markdown("---")
-    st.markdown("🔗 [GitHub Repository](https://github.com/.../password-generator)")
-    st.markdown("📺 [YouTube Demo](https://youtube.com/...)")
-    st.markdown("💼 [LinkedIn Profile](https://www.linkedin.com/in/...)")
+    st.markdown("🔗 [GitHub Repository](https://github.com/WilfriedAmany/PasswordsGenerator.git)")
+    st.markdown("💼 [LinkedIn Profile](www.linkedin.com/in/wa198807)")
 
     st.markdown("---")
     count = get_password_count()
