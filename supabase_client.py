@@ -1,11 +1,17 @@
 from supabase import create_client  # Imports the function to create a Supabase client instance
 import os                           # Imports the 'os' module to access environment variables
 from dotenv import load_dotenv      # Imports the function to load variables from a .env file
+import streamlit as st
 
 load_dotenv()                       # Loads environment variables from the .env file into the system environment
 
-url = os.getenv("SUPABASE_URL")     # Retrieves the Supabase URL from environment variables
-key = os.getenv("SUPABASE_KEY")     # Retrieves the Supabase API key from environment variables
+# st.secrets (Streamlit Cloud) takes priority, fallback to os.getenv (local .env)
+try:
+    url = st.secrets["SUPABASE_URL"]
+    key = st.secrets["SUPABASE_KEY"]
+except (KeyError, FileNotFoundError):
+    url = os.getenv("SUPABASE_URL")
+    key = os.getenv("SUPABASE_KEY")
 
 supabase = None                     # Initializes the Supabase client as None by default
 supabase_connected = False          # Flag to track connection status
